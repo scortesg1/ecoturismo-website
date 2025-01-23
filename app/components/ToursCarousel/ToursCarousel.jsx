@@ -4,9 +4,10 @@ import React, { useRef } from "react";
 import "@splidejs/react-splide/css";
 import { Splide, SplideSlide } from "@splidejs/react-splide"; //eslint-disable-line
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
+import { ChevronLeft, ChevronRight, Leaf, MapPin } from "lucide-react";
 import { albert } from "@/app/ui/fonts";
 import { CAROUSEL_DATA } from "./ToursCarousel.data";
+import { Button } from "@/components/ui/button";
 
 export default function ToursCarousel() {
   const carouselRef = useRef(null);
@@ -49,32 +50,44 @@ export default function ToursCarousel() {
         ref={carouselRef} // Vincula la referencia del carousel
       >
         {CAROUSEL_DATA.map((item) => (
-          <SplideSlide key={item.id}>
-            <Image
-              src={item.image}
-              width={400}
-              height={400}
-              className="w-full rounded-xl h-48 object-cover object-center"
-              alt={item.title}
-            />
-            <div className="flex justify-between items-center mt-6 text-mainwhite">
-              <h3 className={`${albert.className} text-2xl font-bold`}>
-                {item.title}
-              </h3>
-              <div className="flex items-center gap-1 text-gray-300">
-                <MapPin />
-                {item.location}
+          <SplideSlide key={item.title}>
+            <div>
+              <Image
+                src={item.image}
+                width={400}
+                height={400}
+                className="w-full rounded-xl h-48 object-cover object-center"
+                alt={item.title}
+              />
+              <div className="flex justify-between items-center mt-6 text-mainwhite">
+                <h3 className={`${albert.className} text-2xl font-bold`}>
+                  {item.title}
+                </h3>
+                <div className="flex items-center gap-1 text-gray-300">
+                  <MapPin />
+                  {item.location}
+                </div>
+              </div>
+              <p className="text-base lg:text-lg mt-3 text-mainwhite">
+                {item.description}
+              </p>
+              <span className="mt-5 block text-gray-300">
+                Desde{" "}
+                <span className="font-medium text-3xl ps-2">
+                  ${item.price.toLocaleString()}COP
+                </span>
+              </span>
+              <div className="flex gap-2 mt-5 text-mainwhite">
+                <Button variant="outline" className="w-full group">
+                  Reservar
+                  <Leaf className="ml-1 group-hover:fill-mainwhite group-hover:stroke-mainblack" />
+                </Button>
+                <Button variant="gold" className="w-min">
+                  Ver más
+                  <ChevronRight/>
+                </Button>
               </div>
             </div>
-            <p className="text-base lg:text-lg mt-3 text-mainwhite">
-              {item.description}
-            </p>
-            <span className="mt-5 block text-gray-300">
-              Desde{" "}
-              <span className="font-medium text-3xl ps-2">
-                ${item.price.toLocaleString()}COP
-              </span>
-            </span>
           </SplideSlide>
         ))}
       </Splide>

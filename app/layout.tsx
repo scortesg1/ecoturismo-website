@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { quattrocento } from "./ui/fonts.js";
 import Navbar from "./shared/Navbar/Navbar";
+import WhatsAppButton from "./shared/WhatsAppButton/WhatsAppButton";
 
 export const metadata: Metadata = {
   title: "Ecoturismo",
@@ -20,6 +21,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

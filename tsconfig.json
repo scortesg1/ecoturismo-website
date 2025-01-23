@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/ToursCarousel.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/ToursCarousel.jsx", "app/components/ReviewsCarousel/ReviewsCarousel.jsx"],
   "exclude": ["node_modules"]
 }
