@@ -37,6 +37,7 @@ export default function WompiCheckout({ amountInCents }: Props) {
           container.innerHTML = '';
           container.appendChild(script);
         }
+        
       } catch (error) {
         console.error('Error initializing Wompi: ', error);
       }

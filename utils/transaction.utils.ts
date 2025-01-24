@@ -8,6 +8,7 @@ function getReference() {
     const sec = date.getSeconds().toString().padStart(2, '0');
     const numbersRandom = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
 
+    
     return `Wompi-${dateFormatted}-${hours}-${min}-${sec}-${numbersRandom}`;
 }
 

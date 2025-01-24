@@ -22,6 +22,7 @@ interface WompiConfig {
     if (!wompiConfig.Integridad) {
       throw new Error('WOMPI_INTEGRITY is required in environment variables');
     }
+
     
     return wompiConfig;
   };
