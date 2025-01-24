@@ -52,4 +52,5 @@ export default function WompiCheckout({ amountInCents }: Props) {
       </form>
     </div>
   );
+  
 }
