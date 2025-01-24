@@ -19,6 +19,10 @@ interface WompiConfig {
       throw new Error('WOMPI_PUBLIC_KEY is required in environment variables');
     }
   
+    if (!wompiConfig.Integridad) {
+      throw new Error('WOMPI_INTEGRITY is required in environment variables');
+    }
+    
     return wompiConfig;
   };
 

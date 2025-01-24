@@ -38,7 +38,7 @@ export default function WompiCheckout({ amountInCents }: Props) {
           container.appendChild(script);
         }
       } catch (error) {
-        console.error('Error initializing Wompi:', error);
+        console.error('Error initializing Wompi: ', error);
       }
     };
 
@@ -52,5 +52,5 @@ export default function WompiCheckout({ amountInCents }: Props) {
       </form>
     </div>
   );
-  
+
 }
