@@ -3,6 +3,7 @@ import "./globals.css";
 import { quattrocento } from "./ui/fonts.js";
 import Navbar from "./shared/Navbar/Navbar";
 import WhatsAppButton from "./shared/WhatsAppButton/WhatsAppButton";
+import ScrollToTopButton from "./shared/ScrollToTopButton/ScrollToTopButton";
 
 export const metadata: Metadata = {
   title: "Ecoturismo",
@@ -22,6 +23,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <WhatsAppButton />
+        <ScrollToTopButton />
       </body>
     </html>
   );

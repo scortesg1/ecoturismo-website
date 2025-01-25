@@ -1,18 +1,26 @@
 export const NAV_LINKS = [
     {
-        title: "Home",
+        title: "Inicio",
         href: "/"
     },
     {
-        title: "About",
+        title: "Experiencias",
         href: "/"
     },
     {
-        title: "Services",
+        title: "Destinos",
         href: "/"
     },
     {
-        title: "Contact",
+        title: "Nosotros",
+        href: "/"
+    },
+    {
+        title: "Blog",
+        href: "/"
+    },
+    {
+        title: "Reservas",
         href: "/"
     }
 ]

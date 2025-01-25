@@ -10,7 +10,7 @@ import { CAROUSEL_DATA } from "./ToursCarousel.data";
 import { Button } from "@/components/ui/button";
 
 export default function ToursCarousel() {
-  const carouselRef = useRef(null);
+  const toursCarouselRef = useRef(null);
 
   return (
     <div className="py-20 w-9/12 mx-auto z-10">
@@ -20,12 +20,12 @@ export default function ToursCarousel() {
         </h2>
         <div className="flex gap-3">
           <ChevronLeft
-            onClick={() => carouselRef.current?.go("<")}
+            onClick={() => toursCarouselRef.current?.go("<")}
             className="stroke-mainwhite p-2 bg-main hover:bg-[#334136] rounded-full cursor-pointer transition-colors duration-300"
             size={50}
           />
           <ChevronRight
-            onClick={() => carouselRef.current?.go(">")}
+            onClick={() => toursCarouselRef.current?.go(">")}
             className="stroke-mainwhite p-2 bg-main hover:bg-[#334136] rounded-full cursor-pointer transition-colors duration-300"
             size={50}
           />
@@ -37,17 +37,21 @@ export default function ToursCarousel() {
       </p>
 
       <Splide
-        aria-label="My Favorite Images"
+        aria-label="Tours"
         className="mt-20"
+        key="tours"
         options={{
           type: "loop",
+          autoplay: true,
+          interval: 4000,
+          speed: 800,
           perPage: 3,
           gap: "4rem",
           arrows: false,
           pagination: false,
           breakpoints: { 1024: { perPage: 2 }, 640: { perPage: 1 } },
         }} // Opciones del carousel
-        ref={carouselRef} // Vincula la referencia del carousel
+        ref={toursCarouselRef} // Vincula la referencia del carousel
       >
         {CAROUSEL_DATA.map((item) => (
           <SplideSlide key={item.title}>
@@ -84,7 +88,7 @@ export default function ToursCarousel() {
                 </Button>
                 <Button variant="gold" className="w-min">
                   Ver más
-                  <ChevronRight/>
+                  <ChevronRight />
                 </Button>
               </div>
             </div>
