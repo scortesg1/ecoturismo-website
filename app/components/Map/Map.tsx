@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import dynamic from 'next/dynamic';
 import { LOCATIONS_DATA } from "@/app/page";
 import "leaflet/dist/leaflet.css";
 
