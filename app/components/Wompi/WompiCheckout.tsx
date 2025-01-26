@@ -47,9 +47,9 @@ export default function WompiCheckout({ amountInCents }: Props) {
   }, [amountInCents, containerId]);
 
   return (
-    <div>
-      <form>
-        <div id={containerId} />
+    <div className='z-50'>
+      <form className='z-50'>
+        <div className='z-50' id={containerId} />
       </form>
     </div>
   );

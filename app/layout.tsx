@@ -4,6 +4,7 @@ import { quattrocento } from "./ui/fonts.js";
 import Navbar from "./shared/Navbar/Navbar";
 import WhatsAppButton from "./shared/WhatsAppButton/WhatsAppButton";
 import ScrollToTopButton from "./shared/ScrollToTopButton/ScrollToTopButton";
+import MotionWrapper from "./shared/MotionWrapper/MotionWrapper";
 
 export const metadata: Metadata = {
   title: "Ecoturismo",
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${quattrocento.className} antialiased bg-mainwhite text-mainblack`}
+        className={`${quattrocento.className} antialiased bg-mainwhite text-mainblack overflow-x-hidden`}
       >
-        <Navbar />
+        <MotionWrapper direction="down" cascade>
+          <Navbar />
+        </MotionWrapper>
         {children}
         <WhatsAppButton />
         <ScrollToTopButton />

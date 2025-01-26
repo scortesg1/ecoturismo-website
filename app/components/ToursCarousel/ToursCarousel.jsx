@@ -8,34 +8,37 @@ import { ChevronLeft, ChevronRight, Leaf, MapPin } from "lucide-react";
 import { albert } from "@/app/ui/fonts";
 import { CAROUSEL_DATA } from "./ToursCarousel.data";
 import { Button } from "@/components/ui/button";
+import ReservationModal from "../ReservationModal/ReservationModal";
+import MotionWrapper from "@/app/shared/MotionWrapper/MotionWrapper";
 
 export default function ToursCarousel() {
   const toursCarouselRef = useRef(null);
 
   return (
     <div className="py-20 w-9/12 mx-auto z-10">
-      <div className="flex justify-between text-mainwhite">
-        <h2 className={`${albert.className} text-5xl font-bold`}>
-          Planes populares
-        </h2>
-        <div className="flex gap-3">
-          <ChevronLeft
-            onClick={() => toursCarouselRef.current?.go("<")}
-            className="stroke-mainwhite p-2 bg-main hover:bg-[#334136] rounded-full cursor-pointer transition-colors duration-300"
-            size={50}
-          />
-          <ChevronRight
-            onClick={() => toursCarouselRef.current?.go(">")}
-            className="stroke-mainwhite p-2 bg-main hover:bg-[#334136] rounded-full cursor-pointer transition-colors duration-300"
-            size={50}
-          />
+      <MotionWrapper direction="up" cascade damping={0.1}>
+        <div className="flex justify-between text-mainwhite">
+          <h2 className={`${albert.className} text-5xl font-bold`}>
+            Planes populares
+          </h2>
+          <div className="flex gap-3">
+            <ChevronLeft
+              onClick={() => toursCarouselRef.current?.go("<")}
+              className="stroke-mainwhite p-2 bg-main hover:bg-[#334136] rounded-full cursor-pointer transition-colors duration-300"
+              size={50}
+            />
+            <ChevronRight
+              onClick={() => toursCarouselRef.current?.go(">")}
+              className="stroke-mainwhite p-2 bg-main hover:bg-[#334136] rounded-full cursor-pointer transition-colors duration-300"
+              size={50}
+            />
+          </div>
         </div>
-      </div>
-      <p className="text-base lg:text-lg mt-6 text-mainwhite">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-
+        <p className="text-base lg:text-lg mt-6 text-mainwhite">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </MotionWrapper>
       <Splide
         aria-label="Tours"
         className="mt-20"
@@ -82,10 +85,7 @@ export default function ToursCarousel() {
                 </span>
               </span>
               <div className="flex gap-2 mt-5 text-mainwhite">
-                <Button variant="outline" className="w-full group">
-                  Reservar
-                  <Leaf className="ml-1 group-hover:fill-mainwhite group-hover:stroke-mainblack" />
-                </Button>
+                <ReservationModal tour={item} />
                 <Button variant="gold" className="w-min">
                   Ver más
                   <ChevronRight />
