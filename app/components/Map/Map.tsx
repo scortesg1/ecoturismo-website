@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { LOCATIONS_DATA } from "@/app/page";
+
+import React, { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
+import { LOCATIONS_DATA } from "@/app/data/siteData";
 
 const LocationMap = () => {
-  const [map, setMap] = useState(null);
 
   useEffect(() => {
     // Dynamically import Leaflet only on client-side
@@ -46,7 +46,6 @@ const LocationMap = () => {
         }
       });
 
-      setMap(mapInstance);
     }
   }, []);
 

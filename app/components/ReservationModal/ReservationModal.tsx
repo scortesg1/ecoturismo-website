@@ -3,7 +3,6 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -11,10 +10,7 @@ import {
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableHead,
-  TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
@@ -121,7 +117,7 @@ export default function ReservationModal({ tour }: { tour: any }) {
               Cancelar
             </Button>
           </DialogClose>
-          {/* <WompiCheckout amountInCents={tour.price * 1.19}/> */}
+          <WompiCheckout amountInCents={tour.price * 1.19}/>
         </div>
       </DialogContent>
     </Dialog>
