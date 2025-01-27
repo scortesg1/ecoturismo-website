@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   Dialog,
   DialogClose,
@@ -22,18 +23,89 @@ import { Bed, Leaf, MapPin } from "lucide-react";
 import { albert } from "@/app/ui/fonts";
 import Image from "next/image";
 import WompiCheckout from "../Wompi/WompiCheckout";
+import DatePicker from "@/components/DatePicker";
+import { z } from "zod";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+    Form,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormControl,
+    FormMessage,
+  } from "@/components/ui/form";
+  import { Input } from "@/components/ui/input";
+
+
+// Esquema de validación
+const reservationFormSchema = z.object({
+  firstName: z.string().min(1, "Nombre es requerido"),
+  lastName: z.string().min(1, "Apellidos son requeridos"),
+  contactNumber: z
+    .string()
+    .regex(/^\d+$/, "Número de contacto debe ser numérico")
+    .min(10, "Debe tener al menos 10 dígitos"),
+  reservationDate: z.date({ required_error: "Fecha de reserva es requerida" }),
+});
+
+type ReservationFormValues = z.infer<typeof reservationFormSchema>;
 
 export default function ReservationModal({ tour }: { tour: any }) {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    contactNumber: '',
+    reservationDate: new Date(),
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  
+  const form = useForm<ReservationFormValues>({
+    resolver: zodResolver(reservationFormSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      contactNumber: "",
+      reservationDate: new Date(),
+    },
+  });
+
+  const onSubmit = (data: ReservationFormValues) => {
+    console.log("Datos de la reserva:", data);
+    setIsModalOpen(false);
+  };
+
+  const handleDateChange = (date: Date) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      reservationDate: date,
+    }));
+  };
+
+  const handleWompiOpen = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <Dialog open={isModalOpen} onOpenChange={setIsModalOpen} >
+      <DialogTrigger asChild >
         <Button variant="outline" className="w-full group">
           Reservar
           <Leaf className="ml-1 group-hover:fill-mainwhite group-hover:stroke-mainblack" />
         </Button>
       </DialogTrigger>
       <DialogContent
-        className="max-w-4xl"
+        className="max-w-4xl max-h-[90vh] overflow-auto"
         onInteractOutside={(event) => event.preventDefault()}
       >
         <DialogHeader>
@@ -50,7 +122,79 @@ export default function ReservationModal({ tour }: { tour: any }) {
           <span className="text-lg text-mainblack mt-2 block">
             Llena estos datos para poder realizar tu reserva.
           </span>
-          {/* Aquí iría el formulario con Nombres, apellidos, numero, y fecha. */}
+          <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="mt-5 grid grid-cols-2 gap-4"
+          >
+            <FormField
+              control={form.control}
+              name="firstName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Nombre(s)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Ingresa tus nombres" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="lastName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Apellidos</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Ingresa tus apellidos" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="contactNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Número de contacto</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="tel"
+                      placeholder="Número telefónico"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="reservationDate"
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-3">
+                  <FormLabel>Fecha de reserva</FormLabel>
+                  <FormControl>
+                    <Controller
+                      control={form.control}
+                      name="reservationDate"
+                      render={({ field }) => (
+                        <DatePicker
+                        selectedDate={field.value}
+                        onDateChange={(date) => field.onChange(date)}
+                        />
+                      )}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+              
+            />
+          </form>
+        </Form>
         </div>
         <div className="mt-5 grid grid-cols-2 gap-x-10">
           <h2
@@ -121,7 +265,7 @@ export default function ReservationModal({ tour }: { tour: any }) {
               Cancelar
             </Button>
           </DialogClose>
-          {/* <WompiCheckout amountInCents={tour.price * 1.19}/> */}
+          <WompiCheckout amountInCents={tour.price * 1.19} onOpen={handleWompiOpen}/>
         </div>
       </DialogContent>
     </Dialog>

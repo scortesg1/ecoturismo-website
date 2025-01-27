@@ -6,10 +6,11 @@ import { getReference, getIntegrity } from '@/utils/transaction.utils';
 
 interface Props {
   amountInCents: number;
+  onOpen: () => void;
 }
 
-export default function WompiCheckout({ amountInCents }: Props) {
-  const containerId = useId(); // Genera un ID único para cada instancia
+export default function WompiCheckout({ amountInCents, onOpen }: Props) {
+  const containerId = useId();
 
   useEffect(() => {
     const initializeWompi = async () => {
@@ -44,14 +45,17 @@ export default function WompiCheckout({ amountInCents }: Props) {
     };
 
     initializeWompi();
-  }, [amountInCents, containerId]);
+  }, [amountInCents, containerId,]);
 
   return (
-    <div className='z-50'>
-      <form className='z-50'>
-        <div className='z-50' id={containerId} />
+    <button onClick={onOpen} className="">
+    <div className="z-50 relative">
+      <form className="z-50 relative">
+        <div className="z-50 relative" id={containerId} />
       </form>
     </div>
+    </button>
   );
+  
 
 }
