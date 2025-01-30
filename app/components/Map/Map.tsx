@@ -50,7 +50,7 @@ const LocationMap = () => {
   }, []);
 
   return (
-    <div className="h-[600px] relative z-0">
+    <div className="h-96 lg:h-[600px] relative z-0">
       <div id="map" className="w-full h-full rounded-lg overflow-hidden" />
     </div>
   );

@@ -16,7 +16,7 @@ export default function ReviewsCarousel() {
     <div className="pb-20 w-9/12 mx-auto z-10 text-mainwhite">
       <Splide
         aria-label="My Favorite Images"
-        className="mt-20 z-10"
+        className="mt-10 lg:mt-20 z-10"
         key="reviews"
         options={{
           type: "loop",
@@ -32,17 +32,17 @@ export default function ReviewsCarousel() {
       >
         {REVIEWS.map((item) => (
           <SplideSlide key={item.name}>
-            <div className="flex items-center justify-between ps-10 bg-white text-mainblack rounded-xl overflow-hidden h-[500px]">
-              <div className="w-1/2">
+            <div className="flex flex-col-reverse gap-1 lg:gap-3 lg:flex-row items-center justify-between lg:ps-10 bg-white text-mainblack rounded-xl overflow-hidden lg:h-[500px]">
+              <div className="w-full lg:w-1/2 p-6">
                 <MotionWrapper direction="right" cascade damping={0.1}>
-                  <h3 className={`${albert.className} text-4xl font-bold `}>
-                    {item.name} <br /> {item.lastname}
+                  <h3 className={`${albert.className} text-2xl lg:text-4xl font-bold `}>
+                    {item.name} <br className="hidden lg:block" /> {item.lastname}
                   </h3>
-                  <span className="flex items-center gap-1 mt-2 text-lg text-gray-400">
-                    <MapPin size={16} />
+                  <span className="flex items-center gap-1 mt-1 lg:mt-2 text-base lg:text-lg text-gray-400">
+                    <MapPin className="w-4 h-4 lg:w-auto lg:h-auto" />
                     {item.experience}
                   </span>
-                  <p className="text-lg mt-4">{item.review}</p>
+                  <p className="text-sm md:text-base lg:text-lg mt-2 lg:mt-4">{item.review}</p>
                 </MotionWrapper>
               </div>
               <Image
@@ -50,22 +50,22 @@ export default function ReviewsCarousel() {
                 alt={item.name}
                 width={800}
                 height={800}
-                className="w-1/3 object-center object-cover h-full"
+                className="w-full lg:w-1/3 object-top lg:object-center object-cover h-48 lg:h-full"
               />
             </div>
           </SplideSlide>
         ))}
       </Splide>
-      <div className="flex gap-3 items-center justify-center mt-20">
+      <div className="flex gap-3 items-center justify-center mt-10 lg:mt-20">
         <MotionWrapper direction="down" cascade damping={0.1}>
           <ChevronLeft
             onClick={() => reviewsCarouselRef.current?.go("<")}
-            className="stroke-mainblack p-2 bg-mainwhite hover:bg-mainblack rounded-full cursor-pointer transition-colors duration-300"
+            className="stroke-mainblack p-2 bg-mainwhite hover:bg-zinc-300 rounded-full cursor-pointer transition-colors duration-300 w-10 h-10 lg:w-auto lg:h-auto"
             size={50}
           />
           <ChevronRight
             onClick={() => reviewsCarouselRef.current?.go(">")}
-            className="stroke-mainblack p-2 bg-mainwhite hover:bg-mainblack rounded-full cursor-pointer transition-colors duration-300"
+            className="stroke-mainblack p-2 bg-mainwhite hover:bg-zinc-300 rounded-full cursor-pointer transition-colors duration-300 w-10 h-10 lg:w-auto lg:h-auto"
             size={50}
           />
         </MotionWrapper>

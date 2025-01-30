@@ -19,17 +19,18 @@ import { FOOTER_LINKS, LOCATIONS_DATA } from "./data/siteData";
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center h-full">
-      <section className="relative px-12 w-11/12 h-[760px] mt-20 flex justify-between items-center">
-        <div className="flex flex-col gap-3 z-10 text-mainwhite px-14">
+      <section className="relative lg:px-12 w-11/12 h-[600px] xl:h-[760px] mt-10 lg:mt-20 flex flex-col lg:flex-row justify-between items-center">
+        <div className="flex flex-col gap-3 z-10 text-mainwhite px-5 py-16 lg:px-14">
           <MotionWrapper>
-            <h1 className={`${albert.className} text-6xl font-bold `}>
-              Experiencias auténticas en <br /> el corazón del Bosque de Niebla
+            <h1 className={`${albert.className} text-4xl lg:text-6xl font-bold `}>
+              Experiencias auténticas en <br /> el corazón del{" "}
+              <b className="font-bold text-gold">Bosque de Niebla</b>
             </h1>
-            <p className="text-base lg:text-lg">
+            <p className="text-sm md:text-base lg:text-lg">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <div className="flex gap-4 mt-4">
+            <div className="flex flex-col gap-2 lg:gap-4 mt-4">
               <Button variant="outline" className="w-min group">
                 Conoce nuestros planes
                 <Leaf className="ml-1 group-hover:fill-mainwhite group-hover:stroke-mainblack " />
@@ -47,18 +48,19 @@ export default function Home() {
             priority
             height={900}
             alt="bg"
-            className="self-end h-full w-auto brightness-75"
+              className="self-end 2xl:h-full hidden lg:block lg:w-auto brightness-75"
           />
         </MotionWrapper>
         <video
-          className="absolute -z-10 inset-0 w-full h-full object-cover object-center rounded-2xl brightness-[.30]"
+          className="absolute -z-10 inset-0 w-full h-full object-cover object-center rounded-lg lg:rounded-2xl brightness-[.30]"
           autoPlay
           loop
           muted
+          preload="auto"
         >
           <source src="/bosque.mp4" type="video/mp4" />
         </video>
-        <div className="absolute w-[600px] h-auto right-0 -bottom-[1px]">
+        <div className="absolute w-64 2xl:w-[600px] h-auto -right-1 -bottom-[1px] lg:right-0 lg:-bottom-[1px]">
           <Image
             src="/heroShape.svg"
             width={200}
@@ -74,24 +76,24 @@ export default function Home() {
               priority
               height={300}
               alt="logo"
-              className="w-56 absolute bottom-8 left-1/3 opacity-40"
+              className="w-28 lg:w-56 absolute bottom-4 right-5 lg:bottom-8 lg:left-1/3 opacity-40"
             />
           </MotionWrapper>
         </div>
       </section>
-      <section className="w-9/12 my-28">
-        <h2 className={`${albert.className} text-5xl font-bold text-mainblack`}>
+      <section className="w-10/12 lg:w-9/12 my-20 lg:my-28">
+        <h2 className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainblack`}>
           Experimenta el turismo <br /> como nunca antes
         </h2>
-        <p className="text-lg mt-4">
+        <p className="text-sm md:text-base lg:text-lg mt-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. onsectetur
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. onsectetur adipiscing elit, sed do eiusmod tempor
           incididunt ut labore et dolore magna aliqua.{" "}
         </p>
-        <div className="grid grid-cols-3 grid-rows-2 gap-12 relative mt-20 h-[700px]">
-          <div className="relative flex rounded-2xl h-full overflow-hidden row-span-full">
+        <div className="flex flex-col lg:grid grid-cols-3 grid-rows-2 gap-4 lg:gap-12 relative mt-10 lg:mt-20 lg:h-[700px]">
+          <div className="relative flex rounded-lg lg:rounded-2xl h-24 lg:h-full overflow-hidden row-span-full">
             <Image
               src="/experiencesWalk.jpg"
               fill
@@ -103,12 +105,12 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
             {/* Texto */}
             <h3
-              className={`${albert.className} z-10 font-bold text-mainwhite self-end pb-10 ps-10 text-2xl`}
+              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 lg:pb-10 lg:ps-10 text-base lg:text-2xl`}
             >
               Caminatas
             </h3>
           </div>
-          <div className="relative flex rounded-2xl h-full overflow-hidden row-span-1">
+          <div className="relative flex rounded-lg lg:rounded-2xl h-24 lg:h-full overflow-hidden row-span-1">
             <Image
               src="/experiencesForest.jpg"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -120,12 +122,12 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
             {/* Texto */}
             <h3
-              className={`${albert.className} z-10 font-bold text-mainwhite self-end pb-10 ps-10 text-2xl`}
+              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 lg:pb-10 lg:ps-10 text-base lg:text-2xl`}
             >
               Tours
             </h3>
           </div>
-          <div className="relative flex rounded-2xl h-full overflow-hidden row-span-1">
+          <div className="relative flex rounded-lg lg:rounded-2xl h-24 lg:h-full overflow-hidden row-span-1">
             <Image
               src="/experiencesCalm.avif"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -137,12 +139,12 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
             {/* Texto */}
             <h3
-              className={`${albert.className} z-10 font-bold text-mainwhite self-end pb-10 ps-10 text-2xl`}
+              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 lg:pb-10 lg:ps-10 text-base lg:text-2xl`}
             >
               Cabañas
             </h3>
           </div>
-          <div className="relative flex rounded-2xl h-full overflow-hidden row-span-1 col-span-2">
+          <div className="relative flex rounded-lg lg:rounded-2xl h-24 lg:h-full overflow-hidden row-span-1 col-span-2">
             <Image
               src="/experiencesBird.avif"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -154,48 +156,49 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
             {/* Texto */}
             <h3
-              className={`${albert.className} z-10 font-bold text-mainwhite self-end pb-10 ps-10 text-2xl`}
+              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 lg:pb-10 lg:ps-10 text-base lg:text-2xl`}
             >
               Avistamiento
             </h3>
           </div>
         </div>
       </section>
-      <section className="w-full mt-28 flex flex-col items-center justify-center relative h-[850px]">
+      <section className="w-full mt-5 lg:mt-28 flex flex-col items-center justify-center relative lg:h-[850px]">
         <Image
           src="/toursBg.png"
           alt="bg"
           className="-z-10 object-cover brightness-[.25]"
           fill
+          unoptimized
         />
         <ToursCarousel />
       </section>
-      <section className="bg-mainwhite w-9/12 my-28 flex flex-col items-center justify-center relative h-full">
-        <h2 className={`${albert.className} text-5xl font-bold text-mainblack`}>
+      <section className="bg-mainwhite w-10/12 lg:w-9/12 my-14 lg:my-28 flex flex-col items-center justify-center relative h-full">
+        <h2 className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainblack`}>
           Nuestras ubicaciones
         </h2>
-        <p className="mt-4 text-lg">
+        <p className="text-sm text-center lg:text-left md:text-base lg:text-lg mt-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
         </p>
-        <div className="grid grid-cols-2 mt-28">
+        <div className="grid lg:grid-cols-2 mt-14 lg:mt-28 w-full">
           <Map />
-          <div className="flex flex-col gap-4 px-10">
+          <div className="flex flex-col gap-2 mt-5 lg:mt-0 lg:gap-4 lg:px-10">
             <MotionWrapper direction="up" cascade>
               {LOCATIONS_DATA.map((location) => (
                 <div
-                  className="flex flex-col p-6 relative z-10 text-mainwhite group overflow-hidden rounded-xl"
+                  className="flex flex-col p-3 lg:p-6 relative z-10 text-mainwhite group overflow-hidden rounded-xl w-full"
                   key={location.id}
                 >
                   <span
-                    className={`${albert.className} text-right font-bold text-4xl`}
+                    className={`${albert.className} text-right font-bold text-lg lg:text-4xl`}
                   >
                     {location.id}
                   </span>
-                  <h3 className={`${albert.className} font-bold text-2xl mt-4`}>
+                  <h3 className={`${albert.className} font-bold text-base lg:text-2xl mt-4`}>
                     {location.name}
                   </h3>
-                  <p className="text-base pt-1">{location.description}</p>
+                  <p className="text-sm md:text-base pt-1">{location.description}</p>
                   <Image
                     src={location.image}
                     alt={location.name}
@@ -214,24 +217,24 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="w-full bg-main mt-28 pt-28 flex flex-col items-center justify-center relative h-full">
-        <h2 className={`${albert.className} text-5xl font-bold text-mainwhite`}>
+      <section className="w-full bg-main mt-10 lg:mt-28 pt-20 lg:pt-28 flex flex-col items-center justify-center relative h-full">
+        <h2 className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainwhite`}>
           Opiniones
         </h2>
         <ReviewsCarousel />
         <Image
           src="/reviewsBg.png"
-          className="absolute bottom-10 left-0"
+          className="absolute bottom-10 w-40 lg:w-auto left-0"
           width={400}
           height={400}
           alt=""
         ></Image>
       </section>
       {/* FAQ */}
-      <section className="w-9/12 mb-28 mt-56 flex flex-col items-center justify-center relative h-full">
+      <section className="w-10/12 lg:w-9/12 mb-28 mt-56 flex flex-col items-center justify-center relative h-full">
         <MotionWrapper direction="up" cascade>
           <h2
-            className={`${albert.className} text-5xl font-bold text-mainblack`}
+            className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainblack`}
           >
             Preguntas frecuentes
           </h2>
@@ -291,11 +294,11 @@ export default function Home() {
           </MotionWrapper>
         </Accordion>
       </section>
-      <section className="w-9/12 flex gap-x-10 my-28">
+      <section className="w-10/12 lg:w-9/12 flex gap-x-10 my-28">
         <div className="flex flex-col gap-4">
           <MotionWrapper direction="up" cascade damping={0.1}>
             <h2
-              className={`${albert.className} text-5xl font-bold text-mainblack`}
+              className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainblack`}
             >
               Reserva ahora tu próxima <br /> experiencia única
             </h2>
@@ -397,5 +400,3 @@ export default function Home() {
     </main>
   );
 }
-
-
