@@ -231,7 +231,7 @@ export default function Home() {
         ></Image>
       </section>
       {/* FAQ */}
-      <section className="w-10/12 lg:w-9/12 mb-28 mt-56 flex flex-col items-center justify-center relative h-full">
+      <section className="w-10/12 lg:w-9/12 mb-16 lg:mb-28 mt-28 lg:mt-56 flex flex-col items-center justify-center relative h-full">
         <MotionWrapper direction="up" cascade>
           <h2
             className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainblack`}
@@ -239,7 +239,7 @@ export default function Home() {
             Preguntas frecuentes
           </h2>
         </MotionWrapper>
-        <Accordion type="single" collapsible className="w-2/3 mt-20">
+        <Accordion type="single" collapsible className="lg:w-2/3 mt-10 lg:mt-20">
           <MotionWrapper direction="left" cascade damping={0.05}>
             <AccordionItem value="item-1">
               <AccordionTrigger>¿Qué tipos de tours ofrecen?</AccordionTrigger>
@@ -294,8 +294,8 @@ export default function Home() {
           </MotionWrapper>
         </Accordion>
       </section>
-      <section className="w-10/12 lg:w-9/12 flex gap-x-10 my-28">
-        <div className="flex flex-col gap-4">
+      <section className="w-10/12 lg:w-9/12 flex flex-col-reverse gap-y-8 lg:flex-row gap-x-10 my-16 lg:my-28">
+        <div className="flex flex-col gap-4 text-center lg:text-left">
           <MotionWrapper direction="up" cascade damping={0.1}>
             <h2
               className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainblack`}
@@ -306,7 +306,7 @@ export default function Home() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <div className="flex gap-3 mt-4">
+            <div className="flex flex-col lg:flex-row gap-3 mt-4 items-center">
               <Button className="w-min group">
                 Reservar ahora
                 <Leaf className="ml-1 group-hover:fill-mainwhite group-hover:stroke-mainblack" />
@@ -322,51 +322,51 @@ export default function Home() {
             src="https://images.unsplash.com/photo-1484910292437-025e5d13ce87?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             width={800}
             height={800}
-            className="rounded-2xl max-w-xl"
+            className="rounded-lg lg:rounded-2xl xl:max-w-xl"
             alt="Reserva"
           />
         </MotionWrapper>
       </section>
       <footer className="w-full bg-main">
-        <div className="w-11/12 mx-auto text-mainwhite grid grid-cols-[1fr,2fr] gap-4 px-10 pt-32 pb-20">
-          <div className="w-full flex flex-col gap-10">
+        <div className="w-11/12 mx-auto text-mainwhite grid grid-cols-[1fr,2fr] gap-4 px-6 lg:px-10 pt-20 lg:pt-32 pb-20 lg:pb-20">
+          <div className="w-full col-span-full lg:col-span-1 flex flex-col gap-5 lg:gap-10">
             <Image
               src="/nextWhite.svg"
               width={300}
               height={300}
               alt="logo"
-              className="w-56"
+              className="w-36 lg:w-56 mx-auto lg:mx-0"
             />
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col items-center gap-3 text-sm lg:text-base mt-2">
               <MotionWrapper direction="up" cascade>
                 <Link href="/" className="flex items-center gap-2 group">
-                  <Instagram className="group-hover:stroke-gold" />
+                  <Instagram className="group-hover:stroke-gold w-4 h-4 lg:w-6 lg:h-6" />
                   <span className="group-hover:text-gold">Instagram</span>
                 </Link>
                 <Link href="/" className="flex items-center gap-2 group">
-                  <Facebook className="group-hover:stroke-gold" />
+                  <Facebook className="group-hover:stroke-gold w-4 h-4 lg:w-6 lg:h-6" />
                   <span className="group-hover:text-gold">Facebook</span>
                 </Link>
                 <Link href="/" className="flex items-center gap-2 group">
-                  <FaWhatsapp className="group-hover:fill-gold" size={25} />
+                  <FaWhatsapp className="group-hover:fill-gold w-4 h-4 lg:w-6 lg:h-6" size={25} />
                   <span className="group-hover:text-gold">WhatsApp</span>
                 </Link>
               </MotionWrapper>
             </div>
           </div>
-          <nav className="flex gap-x-20">
-            <MotionWrapper direction="right" cascade damping={0.05}>
+          <nav className="grid grid-cols-2 col-span-full lg:col-span-1 w-full lg:flex lg:flex-row gap-8 lg:gap-x-20 mt-10 lg:mt-0">
+            <MotionWrapper direction="right" cascade damping={0.05} className="w-full">
               {FOOTER_LINKS.map((section) => (
-                <div key={section.heading} className="flex flex-col gap-4">
+                <div key={section.heading} className="flex flex-col gap-1 lg:gap-4 w-full">
                   <h4
-                    className={`${albert.className} text-xl font-semibold text-gold pb-2`}
+                    className={`${albert.className} text-base md:text-lg lg:text-xl font-semibold text-gold pb-2`}
                   >
                     {section.heading}
                   </h4>
                   {section.links.map((link) => (
                     <Link
                       href={link.href}
-                      className={`${albert.className} relative hover:text-gold inline-block`}
+                      className={`${albert.className} relative hover:text-gold inline-block text-sm lg:text-base`}
                       key={link.title}
                     >
                       {link.title}
@@ -376,13 +376,13 @@ export default function Home() {
               ))}
             </MotionWrapper>
           </nav>
-          <div className="col-span-full flex justify-between items-center mt-20">
+          <div className="col-span-full flex flex-col-reverse lg:flex-row justify-between items-center text-center lg:text-left mt-10 lg:mt-20 text-sm lg:text-base">
             <MotionWrapper direction="up" cascade>
-              <span>
+              <span className="block mt-5">
                 © {new Date().getFullYear()} Ecoturismo. Todos los derechos
                 reservados
               </span>
-              <div className="flex gap-10">
+              <div className="flex flex-col gap-3 lg:flex-row lg:gap-10">
                 <Link href="/" className="text-mainwhite hover:text-gold">
                   PQRS
                 </Link>

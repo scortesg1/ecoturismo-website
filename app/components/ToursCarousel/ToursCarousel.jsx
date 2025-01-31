@@ -81,7 +81,7 @@ export default function ToursCarousel() {
               <span className="mt-2 lg:mt-5 block text-sm md:text-base text-gray-300">
                 Desde{" "}
                 <span className="font-medium text-xl lg:text-3xl ps-2">
-                  ${item.price.toLocaleString()}COP
+                  ${new Intl.NumberFormat("es-ES").format(item.price)}COP
                 </span>
               </span>
               <div className="flex gap-2 mt-5 text-mainwhite">

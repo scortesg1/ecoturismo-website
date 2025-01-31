@@ -56,7 +56,7 @@ export default function ReviewsCarousel() {
           </SplideSlide>
         ))}
       </Splide>
-      <div className="flex gap-3 items-center justify-center mt-10 lg:mt-20">
+      <div className="flex gap-3 items-center justify-center mt-5 lg:mt-20">
         <MotionWrapper direction="down" cascade damping={0.1}>
           <ChevronLeft
             onClick={() => reviewsCarouselRef.current?.go("<")}
