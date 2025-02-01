@@ -19,18 +19,20 @@ import { FOOTER_LINKS, LOCATIONS_DATA } from "./data/siteData";
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center h-full">
-      <section className="relative lg:px-12 w-11/12 h-[600px] xl:h-[760px] mt-10 lg:mt-20 flex flex-col lg:flex-row justify-between items-center">
-        <div className="flex flex-col gap-3 z-10 text-mainwhite px-5 py-16 lg:px-14">
+      <section className="relative lg:px-12 w-11/12 h-[600px] sm:h-full lg:h-[600px] xl:h-[760px] 2xl:gap-x-6 mt-10 xl:mt-20 flex flex-col lg:flex-row justify-between items-center">
+        <div className="flex flex-col gap-3 z-10 text-mainwhite px-5 py-16 md:px-10 lg:px-0 xl:px-14">
           <MotionWrapper>
-            <h1 className={`${albert.className} text-4xl lg:text-6xl font-bold `}>
+            <h1
+              className={`${albert.className} text-4xl md:text-5xl lg:text-6xl font-bold `}
+            >
               Experiencias auténticas en <br /> el corazón del{" "}
               <b className="font-bold text-gold">Bosque de Niebla</b>
             </h1>
-            <p className="text-sm md:text-base lg:text-lg">
+            <p className="text-sm md:text-base sm:w-3/4 md:w-full lg:text-lg">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <div className="flex flex-col gap-2 lg:gap-4 mt-4">
+            <div className="flex flex-col sm:flex-row gap-2 lg:gap-4 mt-4">
               <Button variant="outline" className="w-min group">
                 Conoce nuestros planes
                 <Leaf className="ml-1 group-hover:fill-mainwhite group-hover:stroke-mainblack " />
@@ -41,14 +43,14 @@ export default function Home() {
             </div>
           </MotionWrapper>
         </div>
-        <MotionWrapper className="w-auto h-full">
+        <MotionWrapper className="w-auto h-full flex self-end">
           <Image
             src="/heroPerson.png"
             width={900}
             priority
             height={900}
             alt="bg"
-              className="self-end 2xl:h-full hidden lg:block lg:w-auto brightness-75"
+            className="self-end hidden sm:block sm:w-80 md:w-[22rem] lg:w-[45rem] 2xl:w-[650px] 2xl:h-auto brightness-75"
           />
         </MotionWrapper>
         <video
@@ -60,7 +62,7 @@ export default function Home() {
         >
           <source src="/bosque.mp4" type="video/mp4" />
         </video>
-        <div className="absolute w-64 2xl:w-[600px] h-auto -right-1 -bottom-[1px] lg:right-0 lg:-bottom-[1px]">
+        <div className="absolute w-64 sm:w-80 md:w-[380px] 2xl:w-[600px] h-auto -right-1 -bottom-[1px] lg:right-0 lg:-bottom-[1px]">
           <Image
             src="/heroShape.svg"
             width={200}
@@ -76,24 +78,26 @@ export default function Home() {
               priority
               height={300}
               alt="logo"
-              className="w-28 lg:w-56 absolute bottom-4 right-5 lg:bottom-8 lg:left-1/3 opacity-40"
+              className="w-28 sm:w-40 xl:w-56 absolute bottom-4 right-5 xl:bottom-8 xl:left-1/3 opacity-40"
             />
           </MotionWrapper>
         </div>
       </section>
-      <section className="w-10/12 lg:w-9/12 my-20 lg:my-28">
-        <h2 className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainblack`}>
+      <section className="w-10/12 xl:w-9/12 my-20 lg:my-24 xl:my-28">
+        <h2
+          className={`${albert.className} text-3xl md:text-4xl xl:text-5xl font-bold text-mainblack`}
+        >
           Experimenta el turismo <br /> como nunca antes
         </h2>
-        <p className="text-sm md:text-base lg:text-lg mt-4">
+        <p className="text-sm md:text-base xl:text-lg mt-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. onsectetur
           adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. onsectetur adipiscing elit, sed do eiusmod tempor
           incididunt ut labore et dolore magna aliqua.{" "}
         </p>
-        <div className="flex flex-col lg:grid grid-cols-3 grid-rows-2 gap-4 lg:gap-12 relative mt-10 lg:mt-20 lg:h-[700px]">
-          <div className="relative flex rounded-lg lg:rounded-2xl h-24 lg:h-full overflow-hidden row-span-full">
+        <div className="flex flex-col md:grid grid-cols-2 lg:grid-cols-3 md:grid-rows-3 lg:grid-rows-2 gap-4 xl:gap-12 relative mt-10 lg:mt-20 lg:h-[550px] xl:h-[700px]">
+          <div className="relative flex rounded-lg xl:rounded-2xl h-24 md:h-full overflow-hidden row-span-2 lg:row-span-full">
             <Image
               src="/experiencesWalk.jpg"
               fill
@@ -105,12 +109,12 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
             {/* Texto */}
             <h3
-              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 lg:pb-10 lg:ps-10 text-base lg:text-2xl`}
+              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 md:pb-5 md:ps-5 lg:pb-8 lg:ps-8 xl:pb-10 xl:ps-10 text-base  lg:text-xl xl:text-2xl`}
             >
               Caminatas
             </h3>
           </div>
-          <div className="relative flex rounded-lg lg:rounded-2xl h-24 lg:h-full overflow-hidden row-span-1">
+          <div className="relative flex rounded-lg xl:rounded-2xl h-24 md:h-48 lg:h-full overflow-hidden row-span-1">
             <Image
               src="/experiencesForest.jpg"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -122,12 +126,12 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
             {/* Texto */}
             <h3
-              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 lg:pb-10 lg:ps-10 text-base lg:text-2xl`}
+              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 md:pb-5 md:ps-5 lg:pb-8 lg:ps-8 xl:pb-10 xl:ps-10 text-base  lg:text-xl xl:text-2xl`}
             >
               Tours
             </h3>
           </div>
-          <div className="relative flex rounded-lg lg:rounded-2xl h-24 lg:h-full overflow-hidden row-span-1">
+          <div className="relative flex rounded-lg xl:rounded-2xl h-24 md:h-48 lg:h-full overflow-hidden row-span-1">
             <Image
               src="/experiencesCalm.avif"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -139,12 +143,12 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
             {/* Texto */}
             <h3
-              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 lg:pb-10 lg:ps-10 text-base lg:text-2xl`}
+              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 md:pb-5 md:ps-5 lg:pb-8 lg:ps-8 xl:pb-10 xl:ps-10 text-base  lg:text-xl xl:text-2xl`}
             >
               Cabañas
             </h3>
           </div>
-          <div className="relative flex rounded-lg lg:rounded-2xl h-24 lg:h-full overflow-hidden row-span-1 col-span-2">
+          <div className="relative flex rounded-lg xl:rounded-2xl h-24 md:h-48 lg:h-full overflow-hidden row-span-1 col-span-2">
             <Image
               src="/experiencesBird.avif"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -156,7 +160,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
             {/* Texto */}
             <h3
-              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 lg:pb-10 lg:ps-10 text-base lg:text-2xl`}
+              className={`${albert.className} z-10 font-semibold lg:font-bold text-mainwhite self-end pb-2 ps-2 md:pb-5 md:ps-5 lg:pb-8 lg:ps-8 xl:pb-10 xl:ps-10 text-base  lg:text-xl xl:text-2xl`}
             >
               Avistamiento
             </h3>
@@ -173,32 +177,38 @@ export default function Home() {
         />
         <ToursCarousel />
       </section>
-      <section className="bg-mainwhite w-10/12 lg:w-9/12 my-14 lg:my-28 flex flex-col items-center justify-center relative h-full">
-        <h2 className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainblack`}>
+      <section className="bg-mainwhite w-10/12 xl:w-9/12 my-14 lg:my-20 xl:my-28 flex flex-col items-center justify-center relative h-full">
+        <h2
+          className={`${albert.className} text-3xl md:text-4xl xl:text-5xl font-bold text-mainblack`}
+        >
           Nuestras ubicaciones
         </h2>
-        <p className="text-sm text-center lg:text-left md:text-base lg:text-lg mt-4">
+        <p className="text-sm text-center md:text-base xl:text-lg mt-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
         </p>
-        <div className="grid lg:grid-cols-2 mt-14 lg:mt-28 w-full">
+        <div className="grid lg:grid-cols-2 mt-14 lg:mt-20 2xl:mt-28 lg:gap-6 w-full">
           <Map />
-          <div className="flex flex-col gap-2 mt-5 lg:mt-0 lg:gap-4 lg:px-10">
+          <div className="flex flex-col gap-2 mt-5 lg:mt-0 lg:gap-4 2xl:px-10">
             <MotionWrapper direction="up" cascade>
               {LOCATIONS_DATA.map((location) => (
                 <div
-                  className="flex flex-col p-3 lg:p-6 relative z-10 text-mainwhite group overflow-hidden rounded-xl w-full"
+                  className="flex flex-col p-3 md:p-4 xl:p-6 relative z-10 text-mainwhite group overflow-hidden rounded-xl w-full"
                   key={location.id}
                 >
                   <span
-                    className={`${albert.className} text-right font-bold text-lg lg:text-4xl`}
+                    className={`${albert.className} text-right font-bold text-lg lg:text-2xl xl:text-4xl`}
                   >
                     {location.id}
                   </span>
-                  <h3 className={`${albert.className} font-bold text-base lg:text-2xl mt-4`}>
+                  <h3
+                    className={`${albert.className} font-bold text-base lg:text-xl xl:text-2xl mt-4`}
+                  >
                     {location.name}
                   </h3>
-                  <p className="text-sm md:text-base pt-1">{location.description}</p>
+                  <p className="text-sm md:text-base pt-1">
+                    {location.description}
+                  </p>
                   <Image
                     src={location.image}
                     alt={location.name}
@@ -218,7 +228,9 @@ export default function Home() {
         </div>
       </section>
       <section className="w-full bg-main mt-10 lg:mt-28 pt-20 lg:pt-28 flex flex-col items-center justify-center relative h-full">
-        <h2 className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainwhite`}>
+        <h2
+          className={`${albert.className} text-3xl md:text-4xl xl:text-5xl font-bold text-mainwhite`}
+        >
           Opiniones
         </h2>
         <ReviewsCarousel />
@@ -231,16 +243,20 @@ export default function Home() {
         ></Image>
       </section>
       {/* FAQ */}
-      <section className="w-10/12 lg:w-9/12 mb-16 lg:mb-28 mt-28 lg:mt-56 flex flex-col items-center justify-center relative h-full">
+      <section className="w-10/12 xl:w-9/12 mb-16 xl:mb-28 mt-28 xl:mt-56 flex flex-col items-center justify-center relative h-full">
         <MotionWrapper direction="up" cascade>
           <h2
-            className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainblack`}
+            className={`${albert.className} text-3xl md:text-4xl xl:text-5xl font-bold text-mainblack`}
           >
             Preguntas frecuentes
           </h2>
         </MotionWrapper>
-        <Accordion type="single" collapsible className="lg:w-2/3 mt-10 lg:mt-20">
-          <MotionWrapper direction="left" cascade damping={0.05}>
+        <Accordion
+          type="single"
+          collapsible
+          className="lg:w-3/4 xl:w-2/3 mt-10 lg:mt-16 xl:mt-20 w-full"
+        >
+          <MotionWrapper direction="left" cascade damping={0.05} className="">
             <AccordionItem value="item-1">
               <AccordionTrigger>¿Qué tipos de tours ofrecen?</AccordionTrigger>
               <AccordionContent>
@@ -294,19 +310,20 @@ export default function Home() {
           </MotionWrapper>
         </Accordion>
       </section>
-      <section className="w-10/12 lg:w-9/12 flex flex-col-reverse gap-y-8 lg:flex-row gap-x-10 my-16 lg:my-28">
-        <div className="flex flex-col gap-4 text-center lg:text-left">
+      <section className="w-10/12 xl:w-9/12 flex flex-col-reverse gap-y-8 md:flex-row gap-x-10 items-center my-16 md:my-20 lg:my-28">
+        <div className="flex flex-col gap-4 text-center sm:items-center md:items-start md:text-left">
           <MotionWrapper direction="up" cascade damping={0.1}>
             <h2
-              className={`${albert.className} text-3xl lg:text-5xl font-bold text-mainblack`}
+              className={`${albert.className} text-3xl md:text-4xl xl:text-5xl font-bold text-mainblack`}
             >
-              Reserva ahora tu próxima <br /> experiencia única
+              Reserva ahora tu próxima{" "}
+              <br className="block md:hidden xl:block" /> experiencia única
             </h2>
             <p className="lg:w-3/4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <div className="flex flex-col lg:flex-row gap-3 mt-4 items-center">
+            <div className="flex flex-col sm:flex-row mx-auto gap-3 mt-4 items-center">
               <Button className="w-min group">
                 Reservar ahora
                 <Leaf className="ml-1 group-hover:fill-mainwhite group-hover:stroke-mainblack" />
@@ -322,22 +339,22 @@ export default function Home() {
             src="https://images.unsplash.com/photo-1484910292437-025e5d13ce87?q=80&w=2114&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             width={800}
             height={800}
-            className="rounded-lg lg:rounded-2xl xl:max-w-xl"
+            className="rounded-lg lg:rounded-2xl sm:w-96 mx-auto md:w-full lg:mx-0 xl:max-w-xl"
             alt="Reserva"
           />
         </MotionWrapper>
       </section>
-      <footer className="w-full bg-main">
+      <footer className="w-full bg-main md:mt-10">
         <div className="w-11/12 mx-auto text-mainwhite grid grid-cols-[1fr,2fr] gap-4 px-6 lg:px-10 pt-20 lg:pt-32 pb-20 lg:pb-20">
-          <div className="w-full col-span-full lg:col-span-1 flex flex-col gap-5 lg:gap-10">
+          <div className="w-full col-span-full md:col-span-1 flex flex-col gap-5 lg:gap-10">
             <Image
               src="/nextWhite.svg"
               width={300}
               height={300}
               alt="logo"
-              className="w-36 lg:w-56 mx-auto lg:mx-0"
+              className="w-36 lg:w-56 mx-auto md:mx-0"
             />
-            <div className="flex flex-col items-center gap-3 text-sm lg:text-base mt-2">
+            <div className="flex flex-col items-center md:items-start gap-3 text-sm lg:text-base mt-2">
               <MotionWrapper direction="up" cascade>
                 <Link href="/" className="flex items-center gap-2 group">
                   <Instagram className="group-hover:stroke-gold w-4 h-4 lg:w-6 lg:h-6" />
@@ -348,16 +365,27 @@ export default function Home() {
                   <span className="group-hover:text-gold">Facebook</span>
                 </Link>
                 <Link href="/" className="flex items-center gap-2 group">
-                  <FaWhatsapp className="group-hover:fill-gold w-4 h-4 lg:w-6 lg:h-6" size={25} />
+                  <FaWhatsapp
+                    className="group-hover:fill-gold w-4 h-4 lg:w-6 lg:h-6"
+                    size={25}
+                  />
                   <span className="group-hover:text-gold">WhatsApp</span>
                 </Link>
               </MotionWrapper>
             </div>
           </div>
-          <nav className="grid grid-cols-2 col-span-full lg:col-span-1 w-full lg:flex lg:flex-row gap-8 lg:gap-x-20 mt-10 lg:mt-0">
-            <MotionWrapper direction="right" cascade damping={0.05} className="w-full">
+          <nav className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 col-span-full md:col-span-1 w-full 2xl:flex 2xl:flex-row gap-8 lg:gap-x-20 mt-10 md:mt-0">
+            <MotionWrapper
+              direction="right"
+              cascade
+              damping={0.05}
+              className="w-full"
+            >
               {FOOTER_LINKS.map((section) => (
-                <div key={section.heading} className="flex flex-col gap-1 lg:gap-4 w-full">
+                <div
+                  key={section.heading}
+                  className="flex flex-col gap-1 lg:gap-4 w-full"
+                >
                   <h4
                     className={`${albert.className} text-base md:text-lg lg:text-xl font-semibold text-gold pb-2`}
                   >
@@ -376,13 +404,13 @@ export default function Home() {
               ))}
             </MotionWrapper>
           </nav>
-          <div className="col-span-full flex flex-col-reverse lg:flex-row justify-between items-center text-center lg:text-left mt-10 lg:mt-20 text-sm lg:text-base">
+          <div className="col-span-full flex flex-col-reverse md:flex-row justify-between items-center text-center lg:text-left mt-10 lg:mt-20 text-sm lg:text-base">
             <MotionWrapper direction="up" cascade>
-              <span className="block mt-5">
+              <span className="block mt-5 md:mt-0">
                 © {new Date().getFullYear()} Ecoturismo. Todos los derechos
                 reservados
               </span>
-              <div className="flex flex-col gap-3 lg:flex-row lg:gap-10">
+              <div className="flex flex-col gap-3 md:flex-row lg:gap-10">
                 <Link href="/" className="text-mainwhite hover:text-gold">
                   PQRS
                 </Link>

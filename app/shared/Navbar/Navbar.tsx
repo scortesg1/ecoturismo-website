@@ -54,7 +54,7 @@ export default function Navbar() {
           <SheetTrigger>
             <Menu className="text-mainblack" size={30} />
           </SheetTrigger>
-          <SheetContent side="left" className="w-screen bg-main text-mainwhite">
+          <SheetContent side="left" className="w-screen bg-main text-mainwhite border-r-0">
             <VisuallyHidden.Root asChild>
               <SheetTitle>Menu</SheetTitle>
             </VisuallyHidden.Root>
