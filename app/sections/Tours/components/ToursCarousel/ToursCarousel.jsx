@@ -8,8 +8,8 @@ import { ChevronLeft, ChevronRight, Leaf, MapPin } from "lucide-react";
 import { albert } from "@/app/ui/fonts";
 import { CAROUSEL_DATA } from "./ToursCarousel.data";
 import { Button } from "@/components/ui/button";
-import ReservationModal from "../ReservationModal/ReservationModal";
 import MotionWrapper from "@/app/shared/MotionWrapper/MotionWrapper";
+import Link from "next/link";
 
 export default function ToursCarousel() {
   const toursCarouselRef = useRef(null);
@@ -91,10 +91,17 @@ export default function ToursCarousel() {
                 </span>
               </span>
               <div className="flex gap-2 md:gap-3 mt-5 text-mainwhite">
-                <ReservationModal tour={item} />
-                <Button variant="gold" className="w-min">
-                  Ver más
-                  <ChevronRight />
+                <Button variant="outline" asChild className="w-full group">
+                  <Link href={`/reserve?tour=${item.id}`}>
+                    Reservar
+                    <Leaf className="ml-1 group-hover:fill-mainwhite group-hover:stroke-mainblack" />
+                  </Link>
+                </Button>
+                <Button variant="gold" asChild className="w-min">
+                  <Link href="/a">
+                    Ver más
+                    <ChevronRight />
+                  </Link>
                 </Button>
               </div>
             </div>

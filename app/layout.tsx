@@ -5,6 +5,7 @@ import Navbar from "./shared/Navbar/Navbar";
 import WhatsAppButton from "./shared/WhatsAppButton/WhatsAppButton";
 import ScrollToTopButton from "./shared/ScrollToTopButton/ScrollToTopButton";
 import MotionWrapper from "./shared/MotionWrapper/MotionWrapper";
+import Footer from "./shared/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "Ecoturismo",
@@ -25,6 +26,7 @@ export default function RootLayout({
           <Navbar />
         </MotionWrapper>
         {children}
+        <Footer />
         <WhatsAppButton />
         <ScrollToTopButton />
       </body>

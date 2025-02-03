@@ -17,7 +17,7 @@ export const NAV_LINKS = [
     },
     {
         title: "Blog",
-        href: "/"
+        href: "/blog"
     },
     {
         title: "Reservas",

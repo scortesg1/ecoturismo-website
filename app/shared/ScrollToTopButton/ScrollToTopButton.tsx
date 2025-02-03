@@ -2,6 +2,7 @@
 
 import { ArrowUp } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import MotionWrapper from "../MotionWrapper/MotionWrapper";
 
 export default function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);

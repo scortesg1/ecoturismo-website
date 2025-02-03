@@ -1,18 +1,23 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import { LOCATIONS_DATA } from "@/app/data/siteData";
 
 const LocationMap = () => {
+  const mapRef = useRef<any>(null); // Referencia para almacenar la instancia del mapa
 
   useEffect(() => {
-    // Dynamically import Leaflet only on client-side
-    const L = require('leaflet');
+    const L = require("leaflet");
 
     if (typeof window !== "undefined") {
-      const mapInstance = L.map("map", { 
-        zoomControl: false 
+      // Verifica si el mapa ya está inicializado
+      if (mapRef.current) {
+        mapRef.current.remove(); // Elimina la instancia previa del mapa antes de crear una nueva
+      }
+
+      const mapInstance = L.map("map", {
+        zoomControl: false,
       }).setView([3.4274, -76.5187], 11);
 
       mapInstance.dragging.disable();
@@ -37,6 +42,7 @@ const LocationMap = () => {
           .addTo(mapInstance)
           .bindPopup(location.name);
 
+        // Agregar el ID dentro del marcador
         const markerElement = marker.getElement();
         if (markerElement) {
           const iconElement = markerElement.querySelector(".custom-marker div");
@@ -46,7 +52,15 @@ const LocationMap = () => {
         }
       });
 
+      mapRef.current = mapInstance; // Guarda la instancia del mapa en la referencia
     }
+
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove(); // Limpia la instancia al desmontar el componente
+        mapRef.current = null;
+      }
+    };
   }, []);
 
   return (

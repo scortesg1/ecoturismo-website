@@ -86,7 +86,7 @@ export default function WompiCheckout({ amountInCents, onOpen, onError }: Props)
   }, [amountInCents, onError]);
 
   return (
-    <div className="relative">
+    <div className="relative h-full">
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900" />
