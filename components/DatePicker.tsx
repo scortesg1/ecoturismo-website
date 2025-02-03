@@ -14,8 +14,8 @@ import {
 } from "@/components/ui/popover";
 
 interface DatePickerProps {
-  selectedDate?: Date; 
-  onDateChange?: (date: Date | undefined) => void; 
+  selectedDate?: Date;
+  onDateChange?: (date: Date | undefined) => void;
   placeholder?: string;
 }
 
@@ -37,7 +37,7 @@ export function DatePicker({
         <Button
           variant={"outline"}
           className={cn(
-            "w-[280px] justify-start text-left font-normal rounded-md border border-neutral-200 bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-neutral-950 placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:border-neutral-800 dark:file:text-neutral-50 dark:placeholder:text-neutral-400 dark:focus-visible:ring-neutral-300 hover:border-black",
+            "w-full justify-start text-left font-normal rounded-md border border-neutral-200 bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-neutral-950 placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:border-neutral-800 dark:file:text-neutral-50 dark:placeholder:text-neutral-400 dark:focus-visible:ring-neutral-300 hover:border-black",
             !date && "text-muted-foreground"
           )}
         >
@@ -49,6 +49,9 @@ export function DatePicker({
         <Calendar
           mode="single"
           selected={date}
+          disabled={(date) =>
+            date < new Date() || date < new Date("1900-01-01")
+          }
           onSelect={handleDateChange}
           initialFocus
         />

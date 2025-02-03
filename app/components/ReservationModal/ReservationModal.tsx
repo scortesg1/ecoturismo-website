@@ -28,13 +28,13 @@ import { z } from "zod";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-    Form,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormControl,
-    FormMessage,
-  } from "@/components/ui/form";
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
 const reservationFormSchema = z.object({
@@ -51,7 +51,7 @@ type ReservationFormValues = z.infer<typeof reservationFormSchema>;
 
 export default function ReservationModal({ tour }: { tour: any }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   const form = useForm<ReservationFormValues>({
     resolver: zodResolver(reservationFormSchema),
     defaultValues: {
@@ -63,7 +63,9 @@ export default function ReservationModal({ tour }: { tour: any }) {
     mode: "onChange",
   });
 
-  const { formState: { isValid, errors } } = form;
+  const {
+    formState: { isValid, errors },
+  } = form;
 
   const onSubmit = (data: ReservationFormValues) => {
     console.log("Datos de la reserva:", data);
@@ -87,7 +89,9 @@ export default function ReservationModal({ tour }: { tour: any }) {
         onInteractOutside={(event) => event.preventDefault()}
       >
         <DialogHeader>
-          <DialogTitle className={`${albert.className} text-4xl font-bold text-main`}>
+          <DialogTitle
+            className={`${albert.className} text-4xl font-bold text-main`}
+          >
             Hacer reserva
           </DialogTitle>
         </DialogHeader>
@@ -172,7 +176,9 @@ export default function ReservationModal({ tour }: { tour: any }) {
           </Form>
         </div>
         <div className="mt-5 grid grid-cols-2 gap-x-10">
-          <h2 className={`${albert.className} text-2xl font-bold text-main col-span-full pb-4`}>
+          <h2
+            className={`${albert.className} text-2xl font-bold text-main col-span-full pb-4`}
+          >
             2. Confirmación de tu reserva
           </h2>
           <Image
@@ -184,7 +190,9 @@ export default function ReservationModal({ tour }: { tour: any }) {
           />
           <div>
             <div className="flex gap-x-4 items-center">
-              <h3 className={`${albert.className} text-xl font-semibold text-gold`}>
+              <h3
+                className={`${albert.className} text-xl font-semibold text-gold`}
+              >
                 {tour.title}
               </h3>
               <div className="flex items-center gap-1 text-sm text-gray-400">
@@ -202,7 +210,9 @@ export default function ReservationModal({ tour }: { tour: any }) {
           </div>
         </div>
         <div className="mt-5">
-          <h2 className={`${albert.className} text-2xl font-bold text-main col-span-full pb-4`}>
+          <h2
+            className={`${albert.className} text-2xl font-bold text-main col-span-full pb-4`}
+          >
             3. Pago
           </h2>
           <Table>
@@ -234,20 +244,21 @@ export default function ReservationModal({ tour }: { tour: any }) {
               Cancelar
             </Button>
           </DialogClose>
-          <div className={`${!isValid ? 'opacity-50 pointer-events-none' : ''}`}>
-            <WompiCheckout 
-              amountInCents={tour.price * 1.19} 
+          <div
+            className={`${!isValid ? "opacity-50 pointer-events-none" : ""}`}
+          >
+            <WompiCheckout
+              amountInCents={tour.price * 1.19}
               onOpen={handleWompiOpen}
             />
           </div>
         </div>
-        {
-          !isValid && (
-            <DialogDescription className="text-gray-500 mt-4">
-              Por favor, llena todos los campos correctamente para proceder con el pago.
-            </DialogDescription>
-          )
-        }
+        {!isValid && (
+          <DialogDescription className="text-gray-500 mt-4">
+            Por favor, llena todos los campos correctamente para proceder con el
+            pago.
+          </DialogDescription>
+        )}
       </DialogContent>
     </Dialog>
   );
