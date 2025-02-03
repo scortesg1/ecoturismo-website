@@ -4,6 +4,7 @@ import { CAROUSEL_DATA } from "@/app/sections/Tours/components/ToursCarousel/Tou
 import ReservationModal from "@/app/shared/Payment/ReservationModal/ReservationModal";
 import { albert } from "@/app/ui/fonts";
 import { redirect, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function Book() {
   const searchParams = useSearchParams();
