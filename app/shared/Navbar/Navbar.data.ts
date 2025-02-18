@@ -4,12 +4,8 @@ export const NAV_LINKS = [
         href: "/"
     },
     {
-        title: "Experiencias",
-        href: "/"
-    },
-    {
-        title: "Destinos",
-        href: "/"
+        title: "Planes",
+        href: "/planes"
     },
     {
         title: "Nosotros",

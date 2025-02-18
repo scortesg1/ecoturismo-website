@@ -4,7 +4,6 @@ import { CAROUSEL_DATA } from "@/app/sections/Tours/components/ToursCarousel/Tou
 import ReservationModal from "@/app/shared/Payment/ReservationModal/ReservationModal";
 import { albert } from "@/app/ui/fonts";
 import { redirect, useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 
 export default function Book() {
   const searchParams = useSearchParams();
@@ -14,7 +13,7 @@ export default function Book() {
     !selectedTour ||
     !CAROUSEL_DATA.find((tour) => tour.id === Number(selectedTour))
   ) {
-    redirect("/tours");
+    redirect("/planes");
   }
 
   return (

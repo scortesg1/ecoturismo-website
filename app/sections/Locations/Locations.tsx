@@ -21,7 +21,7 @@ export default function Locations() {
         tempor incididunt ut labore et dolore magna aliqua.{" "}
       </p>
       <div className="grid lg:grid-cols-2 mt-14 lg:mt-20 2xl:mt-28 lg:gap-6 w-full">
-        <LocationMap />
+        <LocationMap locationsData={LOCATIONS_DATA}/>
         <div className="flex flex-col gap-2 mt-5 lg:mt-0 lg:gap-4 2xl:px-10">
           <MotionWrapper direction="up" cascade>
             {LOCATIONS_DATA.map((location) => (

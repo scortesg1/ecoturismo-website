@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import { LOCATIONS_DATA } from "@/app/data/siteData";
 
-const LocationMap = () => {
+const LocationMap = ({ locationsData }: { locationsData: any }) => {
   const mapRef = useRef<any>(null); // Referencia para almacenar la instancia del mapa
 
   useEffect(() => {
@@ -37,20 +37,36 @@ const LocationMap = () => {
         iconAnchor: [16, 32],
       });
 
-      LOCATIONS_DATA.forEach((location) => {
-        const marker = L.marker(location.coordinates, { icon: customIcon })
+      if (Array.isArray(locationsData)) {
+        LOCATIONS_DATA.forEach((location) => {
+          const marker = L.marker(location.coordinates, { icon: customIcon })
+            .addTo(mapInstance)
+            .bindPopup(location.name);
+
+          // Agregar el ID dentro del marcador
+          const markerElement = marker.getElement();
+          if (markerElement) {
+            const iconElement =
+              markerElement.querySelector(".custom-marker div");
+            if (iconElement) {
+              iconElement.textContent = location.id.toString();
+            }
+          }
+        });
+      } else {
+        const marker = L.marker(locationsData.coordinates, { icon: customIcon })
           .addTo(mapInstance)
-          .bindPopup(location.name);
+          .bindPopup(locationsData.name || locationsData.title);
 
         // Agregar el ID dentro del marcador
         const markerElement = marker.getElement();
         if (markerElement) {
           const iconElement = markerElement.querySelector(".custom-marker div");
           if (iconElement) {
-            iconElement.textContent = location.id.toString();
+            iconElement.textContent = locationsData.id.toString();
           }
         }
-      });
+      }
 
       mapRef.current = mapInstance; // Guarda la instancia del mapa en la referencia
     }

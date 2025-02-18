@@ -36,7 +36,7 @@ export default function Navbar() {
             <li key={link.title} className="">
               <Link
                 href={link.href}
-                className={`${albert.className} relative group hover:text-gold inline-block font-semibold transition-colors duration-300`}
+                className={`${albert.className} relative group hover:text-gold inline-block font-normal transition-colors duration-300`}
               >
                 {link.title}
                 <span className="w-1/2 bg-main h-[2px] block absolute left-1/2 -translate-x-1/2 -bottom-1 group-hover:w-full group-hover:bg-gold transition-all duration-300"></span>
@@ -70,7 +70,7 @@ export default function Navbar() {
                 <li key={link.title} className="">
                   <Link
                     href={link.href}
-                    className={`${albert.className} relative group hover:text-gold inline-block font-semibold transition-colors duration-300`}
+                    className={`${albert.className} relative group hover:text-gold inline-block font-normal transition-colors duration-300`}
                   >
                     {link.title}
                     <span className="w-1/2 bg-main h-[2px] block absolute left-0 -bottom-1 group-hover:w-full group-hover:bg-gold transition-all duration-300"></span>

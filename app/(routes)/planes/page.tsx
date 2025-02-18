@@ -6,7 +6,14 @@ import { ChevronRight, Leaf, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Planes() {
+// Simulación de fetch desde una API
+const fetchPlans = async () => {
+  return CAROUSEL_DATA;
+};
+
+export default async function Planes() {
+  const plans = await fetchPlans();
+
   return (
     <>
       <section className="relative lg:px-12 w-11/12 h-[300px] sm:h-full lg:h-[350px]  2xl:gap-x-6 mt-10 lg:mt-16 xl:mt-20 flex flex-col lg:flex-row justify-center mx-auto items-center">
@@ -42,7 +49,7 @@ export default function Planes() {
           </h2>
           <div className="flex flex-col sm:grid grid-cols-2 gap-10 lg:grid-cols-3 2xl:grid-cols-4 lg:justify-center lg:items-center lg:gap-10 xl:gap-14">
             <MotionWrapper direction="up" cascade>
-              {CAROUSEL_DATA.map((item) => (
+              {plans.map((item) => (
                 <div key={item.id}>
                   <Image
                     src={item.image}
@@ -79,7 +86,7 @@ export default function Planes() {
                       </Link>
                     </Button>
                     <Button variant="gold" asChild className="w-min">
-                      <Link href="/a">
+                      <Link href={`/planes/${item.id}`}>
                         Ver más
                         <ChevronRight />
                       </Link>
@@ -98,7 +105,7 @@ export default function Planes() {
           </h2>
           <div className="flex flex-col sm:grid grid-cols-2 gap-10 lg:grid-cols-3 2xl:grid-cols-4 lg:justify-center lg:items-center lg:gap-10 xl:gap-14">
             <MotionWrapper direction="up" cascade>
-              {CAROUSEL_DATA.map((item) => (
+              {plans.map((item) => (
                 <div key={item.id}>
                   <Image
                     src={item.image}
@@ -135,7 +142,7 @@ export default function Planes() {
                       </Link>
                     </Button>
                     <Button variant="gold" asChild className="w-min">
-                      <Link href="/a">
+                      <Link href={`/planes/${item.id}`}>
                         Ver más
                         <ChevronRight />
                       </Link>
@@ -157,7 +164,11 @@ export default function Planes() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        <Button variant="default" asChild className="w-1/2 xl:w-1/3 mx-auto group mt-5">
+        <Button
+          variant="default"
+          asChild
+          className="w-1/2 xl:w-1/3 mx-auto group mt-5"
+        >
           <Link href={`/`}>
             Contáctanos
             <Leaf className="ml-1 group-hover:fill-mainwhite group-hover:stroke-mainblack" />
