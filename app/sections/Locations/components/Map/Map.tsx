@@ -80,7 +80,7 @@ const LocationMap = ({ locationsData }: { locationsData: any }) => {
   }, []);
 
   return (
-    <div className="h-96 lg:h-[500px] xl:h-[550px] 2xl:h-[600px] relative z-0">
+    <div className="h-96 w-full lg:h-[500px] xl:h-[550px] 2xl:h-[600px] relative z-0">
       <div id="map" className="w-full h-full rounded-lg overflow-hidden" />
     </div>
   );

@@ -4,53 +4,42 @@ import VideoPlayer from "./components/VideoPlayer";
 import { albert } from "@/app/ui/fonts";
 import LocationMap from "@/app/sections/Locations/components/Map/Map";
 import PhotosCarousel from "./components/PhotosCarousel";
-import { Binoculars, EggFried, Leaf, Shield, Users, WavesLadder } from "lucide-react";
+import {
+  Binoculars,
+  EggFried,
+  Leaf,
+  Shield,
+  Users,
+  WavesLadder,
+} from "lucide-react";
 import Feature from "./components/Feature";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-// Simulación de fetch de un solo plan
-const fetchPlanById = async (id: number) => {
-  const plans = CAROUSEL_DATA;
-  return plans.find((plan) => plan.id === id) || null;
-};
-
-export const iconDictionary = [
-  {
-    featureId: 1,
-    icon: "Users",
-  },
-  {
-    featureId: 2,
-    icon: "WavesLadder",
-  },
-  {
-    featureId: 3,
-    icon: "Shield",
-  },
-  {
-    featureId: 4,
-    icon: "EggFried",
-  },
-  {
-    featureId: 5,
-    icon: "Binoculars",
-  },
-];
+function fetchPlans() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(CAROUSEL_DATA);
+    }, 1000);
+  });
+}
 
 export default async function PlanDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const plan = await fetchPlanById(Number(params.id));
+  const plans: any = await fetchPlans();
+  const { id } = await params;
+
+  const plan: any = plans.find((plan: any) => plan.id === Number(id)) || null;
 
   if (!plan) {
     return notFound();
   }
 
   return (
-    <section className="w-10/12 mx-auto p-6 flex flex-col gap-y-20 mt-20">
+    <section className="xl:w-10/12 mx-auto p-6 flex flex-col gap-y-10 xl:gap-y-20 mt-20">
       <div className={`${albert.className} flex flex-col items-center gap-y-1`}>
         <span className="font-bold lg:text-2xl">Conoce</span>
         <h1
@@ -59,10 +48,10 @@ export default async function PlanDetailPage({
           {plan.title}
         </h1>
       </div>
-      <div className="mt-4 w-full">
+      <div className="lg:mt-4 w-full">
         <VideoPlayer />
       </div>
-      <div className="grid grid-cols-2 gap-x-10 items-center">
+      <div className="flex flex-col-reverse gap-y-10 lg:grid grid-cols-2 gap-x-10 items-center">
         <LocationMap locationsData={plan} />
         <div className="flex flex-col gap-y-4">
           <h2
@@ -85,8 +74,8 @@ export default async function PlanDetailPage({
       <div>
         <PhotosCarousel plan={plan} />
       </div>
-      <ul className="flex flex-wrap w-3/4 mx-auto gap-x-20 justify-center">
-        {plan.includes.map((include) => (
+      <ul className="flex flex-wrap gap-8 lg:w-3/4 mx-auto lg:gap-x-20 justify-center">
+        {plan.includes.map((include: any) => (
           <Feature
             key={include.id}
             id={include.id}
@@ -94,7 +83,7 @@ export default async function PlanDetailPage({
           ></Feature>
         ))}
       </ul>
-      <div className="flex flex-col gap-4 text-center w-11/12 md:w-3/4 xl:w-1/2 mx-auto mb-24 md:mt-20">
+      <div className="flex flex-col gap-4 text-center w-11/12 md:w-3/4 xl:w-1/2 mx-auto mb-24 mt-10 md:mt-20">
         <h2
           className={`${albert.className} text-3xl md:text-4xl xl:text-5xl font-bold text-main`}
         >
@@ -110,7 +99,7 @@ export default async function PlanDetailPage({
           className="w-1/2 xl:w-1/3 mx-auto group mt-5"
         >
           <Link href={`/reserve?tour=${plan.id}`}>
-            Reserva {plan.title}  
+            Reserva {plan.title}
             <Leaf className="ml-1 group-hover:fill-mainwhite group-hover:stroke-mainblack" />
           </Link>
         </Button>
