@@ -149,7 +149,7 @@ export default function ReservationModal({ tour }: { tour: any }) {
           </p>
         )}
       </div>
-      <div className="mt-5 grid grid-cols-2 gap-x-10">
+      <div className="mt-5 flex flex-col items-center justify-center md:grid grid-cols-2 gap-10">
         <h2
           className={`${albert.className} text-2xl font-bold text-main col-span-full pb-4`}
         >
@@ -174,12 +174,17 @@ export default function ReservationModal({ tour }: { tour: any }) {
               {tour.location}
             </div>
           </div>
-          <span className="pt-2 block text-sm text-mainblack">
+          <span className="pt-2 block text-base text-mainblack">
             {tour.description}
           </span>
-          <span className="pt-3 block">Incluye:</span>
-          <div>
-            <Bed />
+          <span className="pt-3 block text-center md:text-left mt-4">Incluye:</span>
+          <div className="flex flex-wrap gap-4 pt-2 justify-center md:justify-normal">
+            {tour.includes.map((feature: any) => (
+              <div key={feature.id} className="flex items-center gap-2">
+                <Bed size={15} />
+                <span className="text-sm">{feature.name}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
