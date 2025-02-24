@@ -179,7 +179,12 @@ export default function ReservationModal({ tour }: { tour: any }) {
           </span>
           <span className="pt-3 block">Incluye:</span>
           <div>
-            <Bed />
+            {tour.includes.map((service: { id: number; name: string }) => (
+              <div key={service.id} className="flex items-center gap-2">
+                <Bed />
+                <span>{service.name}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

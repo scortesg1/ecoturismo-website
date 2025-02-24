@@ -1,18 +1,41 @@
 "use client";
 
-import { CAROUSEL_DATA } from "@/app/sections/Tours/components/ToursCarousel/ToursCarousel.data";
+import { adaptCarouselData } from "@/app/sections/Tours/components/ToursCarousel/ToursCarousel.data";
 import ReservationModal from "@/app/shared/Payment/ReservationModal/ReservationModal";
 import { albert } from "@/app/ui/fonts";
 import { redirect, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+
 
 export default function Book() {
   const searchParams = useSearchParams();
   const selectedTour = searchParams.get("tour");
+  const [tour, setTour] = useState();
+  const [loading, setLoading] = useState(true);
 
-  if (
-    !selectedTour ||
-    !CAROUSEL_DATA.find((tour) => tour.id === Number(selectedTour))
-  ) {
+  useEffect(() => {
+    const fetchTourData = async () => {
+      try {
+        const response = await fetch(`http://localhost:1337/api/plans/${selectedTour}?populate=*`);
+        const tour = await response.json();
+        const adaptedData = adaptCarouselData(tour.data);
+        setTour(adaptedData);
+      } catch (error) {
+        console.error('Error fetching tour data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTourData();
+  }, [selectedTour]);
+
+  //Metele un loading exótico peh
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!selectedTour || !tour) {
     redirect("/planes");
   }
 
@@ -23,7 +46,7 @@ export default function Book() {
       >
         Reserva
       </h1>
-      <ReservationModal tour={CAROUSEL_DATA[Number(selectedTour)]} />
+      <ReservationModal tour={tour} />
     </section>
   );
 }

@@ -6,13 +6,30 @@ import { Splide, SplideSlide } from "@splidejs/react-splide"; //eslint-disable-l
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Leaf, MapPin } from "lucide-react";
 import { albert } from "@/app/ui/fonts";
-import { CAROUSEL_DATA } from "./ToursCarousel.data";
+import { adaptCarouselData } from "./ToursCarousel.data";
 import { Button } from "@/components/ui/button";
 import MotionWrapper from "@/app/shared/MotionWrapper/MotionWrapper";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function ToursCarousel() {
   const toursCarouselRef = useRef(null);
+  const [CAROUSEL_DATA, setCAROUSEL_DATA] = useState([]);
+
+  useEffect(() => {
+    const fetchCarouselData = async () => {
+      try {
+        const response = await fetch('http://localhost:1337/api/plans?populate=*');
+        const plans = await response.json();
+        const adaptedData = adaptCarouselData(plans.data);
+        setCAROUSEL_DATA(adaptedData);
+      } catch (error) {
+        console.error('Error fetching carousel data:', error);
+      }
+    };
+
+    fetchCarouselData();
+  }, []);
 
   return (
     <div className="py-20 w-10/12 xl:w-9/12 mx-auto z-10">

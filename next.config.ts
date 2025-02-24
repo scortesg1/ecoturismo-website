@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+
       {
         protocol: "https",
         hostname: "idiomasblendex.com",
@@ -21,6 +22,12 @@ const nextConfig: NextConfig = {
         hostname: "dynamic-media-cdn.tripadvisor.com",
         port: "",
         pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
+        pathname: "/uploads/**",
       },
     ],
   },

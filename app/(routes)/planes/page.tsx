@@ -1,4 +1,4 @@
-import { CAROUSEL_DATA } from "@/app/sections/Tours/components/ToursCarousel/ToursCarousel.data";
+import { adaptCarouselData } from "@/app/sections/Tours/components/ToursCarousel/ToursCarousel.data";
 import MotionWrapper from "@/app/shared/MotionWrapper/MotionWrapper";
 import { albert } from "@/app/ui/fonts";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,14 @@ import Link from "next/link";
 
 // Simulación de fetch desde una API
 const fetchPlans = async () => {
-  return CAROUSEL_DATA;
+  try {
+    const response = await fetch('http://localhost:1337/api/plans?populate=*');
+    const plans = await response.json();
+    const adaptedData = adaptCarouselData(plans.data);
+    return adaptedData;
+  } catch (error) {
+    console.error('Error fetching carousel data:', error);
+  }
 };
 
 export default async function Planes() {
@@ -49,7 +56,7 @@ export default async function Planes() {
           </h2>
           <div className="flex flex-col sm:grid grid-cols-2 gap-10 lg:grid-cols-3 2xl:grid-cols-4 lg:justify-center lg:items-center lg:gap-10 xl:gap-14">
             <MotionWrapper direction="up" cascade>
-              {plans.map((item) => (
+              {Array.isArray(plans) && plans.map((item) => (
                 <div key={item.id}>
                   <Image
                     src={item.image}
@@ -105,7 +112,7 @@ export default async function Planes() {
           </h2>
           <div className="flex flex-col sm:grid grid-cols-2 gap-10 lg:grid-cols-3 2xl:grid-cols-4 lg:justify-center lg:items-center lg:gap-10 xl:gap-14">
             <MotionWrapper direction="up" cascade>
-              {plans.map((item) => (
+              {Array.isArray(plans) && plans.map((item) => (
                 <div key={item.id}>
                   <Image
                     src={item.image}
