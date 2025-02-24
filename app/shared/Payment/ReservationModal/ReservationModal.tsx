@@ -21,6 +21,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import Link from "next/link";
 
 const reservationFormSchema = z.object({
   firstName: z.string().min(1, "Nombre es requerido"),
@@ -30,7 +38,19 @@ const reservationFormSchema = z.object({
     .regex(/^\d+$/, "Número de contacto debe ser numérico")
     .min(10, "Debe tener al menos 10 dígitos"),
   reservationDate: z.date({ required_error: "Fecha de reserva es requerida" }),
+  identificationType: z.string().min(1, "Tipo de documento es requerido"),
+  identificationNumber: z.string().min(1, "Número de documento es requerido"),
 });
+
+const IDENTIFICATION_TYPES = [
+  "Cedula de ciudadanía",
+  "Cedula de extranjería",
+  "Pasaporte",
+  "Tarjeta de identidad",
+  "Registro civil",
+  "NIT",
+  "RUT",
+];
 
 type ReservationFormValues = z.infer<typeof reservationFormSchema>;
 
@@ -44,6 +64,7 @@ export default function ReservationModal({ tour }: { tour: any }) {
       lastName: "",
       contactNumber: "",
       reservationDate: new Date(),
+      identificationNumber: "",
     },
     mode: "onChange",
   });
@@ -103,6 +124,51 @@ export default function ReservationModal({ tour }: { tour: any }) {
             />
             <FormField
               control={form.control}
+              name="identificationType"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-neutral-700">
+                    Tipo de documento
+                  </FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Tipo de documento..." />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {IDENTIFICATION_TYPES.map((idType) => (
+                        <SelectItem key={idType} value={idType}>
+                          {idType}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="identificationNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Número de documento</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Ingresa tu número de documento"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name="contactNumber"
               render={({ field }) => (
                 <FormItem>
@@ -122,7 +188,7 @@ export default function ReservationModal({ tour }: { tour: any }) {
               control={form.control}
               name="reservationDate"
               render={({ field }) => (
-                <FormItem className="flex flex-col gap-3">
+                <FormItem className="flex flex-col self-end">
                   <FormLabel>Fecha de reserva</FormLabel>
                   <FormControl>
                     <Controller
@@ -177,7 +243,9 @@ export default function ReservationModal({ tour }: { tour: any }) {
           <span className="pt-2 block text-base text-mainblack">
             {tour.description}
           </span>
-          <span className="pt-3 block text-center md:text-left mt-4">Incluye:</span>
+          <span className="pt-3 block text-center md:text-left mt-4">
+            Incluye:
+          </span>
           <div className="flex flex-wrap gap-4 pt-2 justify-center md:justify-normal">
             {tour.includes.map((feature: any) => (
               <div key={feature.id} className="flex items-center gap-2">
@@ -220,8 +288,8 @@ export default function ReservationModal({ tour }: { tour: any }) {
       <div className="mt-5 flex justify-end w-full gap-x-4">
         {isValid && (
           <>
-            <Button variant="destructive" className="h-10">
-              Cancelar
+            <Button variant="destructive" className="h-10" asChild>
+              <Link href="/planes">Cancelar</Link>
             </Button>
             <WompiCheckout
               amountInCents={tour.price * 1.19}

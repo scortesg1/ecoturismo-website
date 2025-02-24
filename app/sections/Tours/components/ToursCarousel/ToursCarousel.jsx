@@ -98,7 +98,7 @@ export default function ToursCarousel() {
                   </Link>
                 </Button>
                 <Button variant="gold" asChild className="w-min">
-                  <Link href="/a">
+                  <Link href={`/planes/${item.id}`}>
                     Ver más
                     <ChevronRight />
                   </Link>

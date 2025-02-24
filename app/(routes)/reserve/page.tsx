@@ -23,7 +23,7 @@ export default function Book() {
       >
         Reserva
       </h1>
-      <ReservationModal tour={CAROUSEL_DATA[Number(selectedTour)]} />
+      <ReservationModal tour={CAROUSEL_DATA[Number(selectedTour) - 1]} />
     </section>
   );
 }

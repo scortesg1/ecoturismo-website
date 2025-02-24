@@ -14,7 +14,7 @@ export default function Nosotros() {
         <div className="flex flex-col items-center text-center gap-3 z-10 text-main px-5 py-16 md:px-10 lg:px-0 xl:px-14">
           <MotionWrapper direction="up">
             <h1
-              className={`${albert.className} text-4xl md:text-5xl lg:text-6xl font-bold `}
+              className={`${albert.className} text-4xl md:text-5xl lg:text-6xl font-bold text-main`}
             >
               Conoce más sobre nosotros
             </h1>
