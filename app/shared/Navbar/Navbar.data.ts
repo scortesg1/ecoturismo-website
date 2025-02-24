@@ -9,14 +9,10 @@ export const NAV_LINKS = [
     },
     {
         title: "Nosotros",
-        href: "/"
+        href: "/nosotros"
     },
     {
         title: "Blog",
         href: "/blog"
-    },
-    {
-        title: "Reservas",
-        href: "/"
     }
 ]

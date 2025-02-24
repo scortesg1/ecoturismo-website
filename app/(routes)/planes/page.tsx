@@ -15,7 +15,7 @@ export default async function Planes() {
   const plans = await fetchPlans();
 
   return (
-    <>
+    <main>
       <section className="relative lg:px-12 w-11/12 h-[300px] sm:h-full lg:h-[350px]  2xl:gap-x-6 mt-10 lg:mt-16 xl:mt-20 flex flex-col lg:flex-row justify-center mx-auto items-center">
         <div className="flex flex-col items-center text-center gap-3 z-10 text-mainwhite px-5 py-16 md:px-10 lg:px-0 xl:px-14">
           <MotionWrapper>
@@ -175,6 +175,6 @@ export default async function Planes() {
           </Link>
         </Button>
       </section>
-    </>
+    </main>
   );
 }
