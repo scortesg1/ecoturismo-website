@@ -16,6 +16,9 @@ export default {
   			gold: 'var(--gold)',
   			darkgold: 'var(--darkgold)'
   		},
+		fontFamily: {
+			albert: 'var(--albert)',
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
