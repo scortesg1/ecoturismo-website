@@ -13,7 +13,7 @@ export default function RegularPost({
   listed: boolean;
 }) {
   return (
-    <div className={`${listed ? "h-72" : null} flex flex-col justify-between gap-0 relative p-8 rounded-xl group overflow-hidden`}>
+    <div className={`${listed ? "h-full xl:h-72" : null} flex flex-col justify-between gap-4 lg:gap-0 relative p-8 rounded-xl group overflow-hidden`}>
       <Link
         href={`/blog/${post.slug}`}
         className="self-end z-10 w-14 h-14 rounded-full bg-mainwhite flex items-center justify-center"

@@ -7,7 +7,7 @@ import { Post } from "../../types/post.type";
 
 export default function HighlightedPost({ post }: { post: Post }) {
   return (
-    <div className="row-span-full flex flex-col justify-between gap-32 relative p-8 rounded-xl group overflow-hidden">
+    <div className="row-span-full md:col-span-full lg:col-span-1 flex flex-col justify-between gap-32 relative p-8 rounded-xl group overflow-hidden">
       <Link
         href={`/blog/${post.slug}`}
         className="self-end z-10 w-14 h-14 rounded-full bg-mainwhite flex items-center justify-center"
