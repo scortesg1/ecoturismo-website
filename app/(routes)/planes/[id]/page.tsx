@@ -4,14 +4,7 @@ import VideoPlayer from "./components/VideoPlayer";
 import { albert } from "@/app/ui/fonts";
 import LocationMap from "@/app/sections/Locations/components/Map/Map";
 import PhotosCarousel from "./components/PhotosCarousel";
-import {
-  Binoculars,
-  EggFried,
-  Leaf,
-  Shield,
-  Users,
-  WavesLadder,
-} from "lucide-react";
+import { Leaf } from "lucide-react";
 import Feature from "./components/Feature";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

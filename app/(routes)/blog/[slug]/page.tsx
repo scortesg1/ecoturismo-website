@@ -16,25 +16,26 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
-  const post = BLOG_DATA.find((post) => post.slug === params.slug);
+export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = BLOG_DATA.find((post) => post.slug === slug);
 
   if (!post) {
     return <div>Post not found</div>;
   }
 
   return (
-    <main className="relative">
-      <article className="w-8/12 mx-auto mt-36 flex flex-col gap-20">
-        <div className="grid grid-cols-2 gap-10 items-center">
+    <main className="relative overflow-x-hidden">
+      <article className="w-11/12 2xl:w-8/12 mx-auto mt-20 xl:mt-36 flex flex-col gap-12 lg:gap-20">
+        <div className="flex flex-col lg:grid grid-cols-2 gap-10 items-center">
           <Image
             src={post?.image}
             alt={post.title}
             width={700}
             height={700}
-            className="rounded-xl h-[400px] object-cover object-center"
+            className="rounded-xl h-40 md:h-72 lg:h-[400px] object-cover object-center"
           />
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 text-center lg:text-left">
             <span className="text-gold">{post.date}</span>
             <h1
               className={`${albert.className} text-4xl md:text-5xl lg:text-6xl font-bold text-main`}
@@ -45,7 +46,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
           </div>
         </div>
         <PostContent content={post.content}></PostContent>
-        <section className="flex flex-col gap-3 text-center w-11/12 md:w-3/4 xl:w-1/2 mx-auto my-24 md:my-24">
+        <section className="flex flex-col gap-3 text-center w-11/12 md:w-3/4 2xl:w-1/2 mx-auto my-16 mt-10 2xl:my-24">
           <h2
             className={`${albert.className} text-3xl md:text-4xl xl:text-5xl font-bold text-main`}
           >
@@ -69,8 +70,8 @@ export default async function Post({ params }: { params: { slug: string } }) {
           </Button>
         </section>
       </article>
-      <Shape1/>
-      <Shape2/>
+      <Shape1 />
+      <Shape2 />
     </main>
   );
 }
