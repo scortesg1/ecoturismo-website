@@ -26,7 +26,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 
   return (
     <main className="relative overflow-x-hidden">
-      <article className="w-11/12 2xl:w-8/12 mx-auto mt-20 xl:mt-36 flex flex-col gap-12 lg:gap-20">
+      <article className="w-11/12 2xl:w-8/12 mx-auto mt-20 2xl:mt-36 flex flex-col gap-12 lg:gap-20">
         <div className="flex flex-col lg:grid grid-cols-2 gap-10 items-center">
           <Image
             src={post?.image}
